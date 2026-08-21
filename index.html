@@ -210,147 +210,148 @@
 
                 </div>
 
-            </section>
-            <!-- FILTROS -->
-            <div class="filters">
 
-                <div class="search">
+                <!-- FILTROS -->
+                <div class="filters">
 
-                    <span class="search__icon">
-                        ⌕
-                    </span>
+                    <div class="search">
 
-                    <input type="search" id="inputPesquisa" class="search__input"
-                        placeholder="Pesquisar por vaga ou empresa..." aria-label="Pesquisar candidaturas">
+                        <span class="search__icon">
+                            ⌕
+                        </span>
 
-                </div>
-
-
-                <select id="filtroStatus" class="filter-select" aria-label="Filtrar por status">
-
-                    <option value="todos">
-                        Todos os status
-                    </option>
-
-                    <option value="enviada">
-                        Enviada
-                    </option>
-
-                    <option value="analise">
-                        Em análise
-                    </option>
-
-                    <option value="entrevista">
-                        Entrevista
-                    </option>
-
-                    <option value="aprovada">
-                        Aprovada
-                    </option>
-
-                    <option value="rejeitada">
-                        Rejeitada
-                    </option>
-
-                </select>
-
-            </div>
-
-            <!-- LISTA -->
-            <div class="application-list" id="listaCandidaturas">
-
-                <!-- CARD DE EXEMPLO -->
-                <article class="application-card">
-
-                    <div class="application-card__company">
-
-                        <div class="company-logo">
-                            AC
-                        </div>
+                        <input type="search" id="inputPesquisa" class="search__input"
+                            placeholder="Pesquisar por vaga ou empresa..." aria-label="Pesquisar candidaturas">
 
                     </div>
 
 
-                    <div class="application-card__content">
+                    <select id="filtroStatus" class="filter-select" aria-label="Filtrar por status">
 
-                        <div class="application-card__top">
+                        <option value="todos">
+                            Todos os status
+                        </option>
 
-                            <div>
+                        <option value="enviada">
+                            Enviada
+                        </option>
 
-                                <h3 class="application-card__title">
-                                    Desenvolvedor Front-end
-                                </h3>
+                        <option value="analise">
+                            Em análise
+                        </option>
 
-                                <p class="application-card__company-name">
-                                    Acme Corporation
-                                </p>
+                        <option value="entrevista">
+                            Entrevista
+                        </option>
+
+                        <option value="aprovada">
+                            Aprovada
+                        </option>
+
+                        <option value="rejeitada">
+                            Rejeitada
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- LISTA -->
+                <div class="application-list" id="listaCandidaturas">
+
+                    <!-- CARD DE EXEMPLO -->
+                    <article class="application-card">
+
+                        <div class="application-card__company">
+
+                            <div class="company-logo">
+                                AC
+                            </div>
+
+                        </div>
+
+
+                        <div class="application-card__content">
+
+                            <div class="application-card__top">
+
+                                <div>
+
+                                    <h3 class="application-card__title">
+                                        Desenvolvedor Front-end
+                                    </h3>
+
+                                    <p class="application-card__company-name">
+                                        Acme Corporation
+                                    </p>
+
+                                </div>
+
+
+                                <span class="status status--analysis">
+                                    Em análise
+                                </span>
 
                             </div>
 
 
-                            <span class="status status--analysis">
-                                Em análise
-                            </span>
+                            <div class="application-card__details">
+
+                                <span>
+                                    📍 São Paulo, SP
+                                </span>
+
+                                <span>
+                                    💰 R$ 3.000 - R$ 4.000
+                                </span>
+
+                                <span>
+                                    📅 20/08/2026
+                                </span>
+
+                            </div>
+
+
+                            <div class="application-card__actions">
+
+                                <button type="button" class="button button--secondary" data-action="edit">
+
+                                    Editar
+
+                                </button>
+
+
+                                <button type="button" class="button button--danger" data-action="delete">
+
+                                    Excluir
+
+                                </button>
+
+                            </div>
 
                         </div>
 
+                    </article>
 
-                        <div class="application-card__details">
+                </div>
+                <!-- ESTADO VAZIO -->
+                <div class="empty-state" id="estadoVazio" hidden>
 
-                            <span>
-                                📍 São Paulo, SP
-                            </span>
-
-                            <span>
-                                💰 R$ 3.000 - R$ 4.000
-                            </span>
-
-                            <span>
-                                📅 20/08/2026
-                            </span>
-
-                        </div>
-
-
-                        <div class="application-card__actions">
-
-                            <button type="button" class="button button--secondary" data-action="edit">
-
-                                Editar
-
-                            </button>
-
-
-                            <button type="button" class="button button--danger" data-action="delete">
-
-                                Excluir
-
-                            </button>
-
-                        </div>
-
+                    <div class="empty-state__icon">
+                        💼
                     </div>
 
-                </article>
+                    <h3>
+                        Nenhuma candidatura encontrada
+                    </h3>
 
-            </div>
-            <!-- ESTADO VAZIO -->
-            <div class="empty-state" id="estadoVazio" hidden>
+                    <p>
+                        Adicione sua primeira candidatura para começar
+                        a acompanhar suas oportunidades.
+                    </p>
 
-                <div class="empty-state__icon">
-                    💼
                 </div>
-
-                <h3>
-                    Nenhuma candidatura encontrada
-                </h3>
-
-                <p>
-                    Adicione sua primeira candidatura para começar
-                    a acompanhar suas oportunidades.
-                </p>
-
-            </div>
+            </section>
         </main>
     </div>
     <!-- MODAL -->
