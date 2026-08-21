@@ -383,6 +383,123 @@
 
 
             <form class="form" id="formCandidatura">
+                <div class="form__group">
+
+                    <label for="cargo">
+                        Cargo
+                    </label>
+
+                    <input type="text" id="cargo" name="cargo" placeholder="Ex: Desenvolvedor Front-end" required>
+
+                </div>
+
+
+                <div class="form__group">
+
+                    <label for="empresa">
+                        Empresa
+                    </label>
+
+                    <input type="text" id="empresa" name="empresa" placeholder="Ex: Empresa XYZ" required>
+
+                </div>
+
+
+                <div class="form__row">
+
+                    <div class="form__group">
+
+                        <label for="localizacao">
+                            Localização
+                        </label>
+
+                        <input type="text" id="localizacao" name="localizacao" placeholder="Ex: São Paulo, SP">
+
+                    </div>
+
+
+                    <div class="form__group">
+
+                        <label for="salario">
+                            Salário
+                        </label>
+
+                        <input type="text" id="salario" name="salario" placeholder="Ex: R$ 3.000">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form__row">
+
+                    <div class="form__group">
+
+                        <label for="dataCandidatura">
+                            Data
+                        </label>
+
+                        <input type="date" id="dataCandidatura" name="dataCandidatura" required>
+
+                    </div>
+
+
+                    <div class="form__group">
+
+                        <label for="status">
+                            Status
+                        </label>
+
+                        <select id="status" name="status">
+
+                            <option value="enviada">
+                                Enviada
+                            </option>
+
+                            <option value="analise">
+                                Em análise
+                            </option>
+
+                            <option value="entrevista">
+                                Entrevista
+                            </option>
+
+                            <option value="aprovada">
+                                Aprovada
+                            </option>
+
+                            <option value="rejeitada">
+                                Rejeitada
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form__group">
+
+                    <label for="linkVaga">
+                        Link da vaga
+                    </label>
+
+                    <input type="url" id="linkVaga" name="linkVaga" placeholder="https://...">
+
+                </div>
+
+
+                <div class="form__group">
+
+                    <label for="observacoes">
+                        Observações
+                    </label>
+
+                    <textarea id="observacoes" name="observacoes" rows="4"
+                        placeholder="Adicione observações sobre a candidatura..."></textarea>
+
+                </div>
 
             </form>
 
