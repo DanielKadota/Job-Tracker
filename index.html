@@ -21,338 +21,375 @@
 
     <div class="app">
 
-    </div>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-        <div class="sidebar__brand">
-
-            <div class="sidebar__logo">
-                JT
-            </div>
-
-            <div>
-                <h1 class="sidebar__title">Job Tracker</h1>
-
-                <span class="sidebar__subtitle">
-                    Gestão de candidaturas
-                </span>
-            </div>
-
-        </div>
 
 
-        <nav class="sidebar__nav" aria-label="Navegação principal">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-            <a href="#" class="nav-link nav-link--active">
-                <span>▦</span>
-                Dashboard
-            </a>
+            <div class="sidebar__brand">
 
-            <a href="#" class="nav-link">
-                <span>▤</span>
-                Candidaturas
-            </a>
+                <div class="sidebar__logo">
+                    JT
+                </div>
 
-        </nav>
+                <div>
+                    <h1 class="sidebar__title">Job Tracker</h1>
 
-
-        <div class="sidebar__footer">
-
-            <span>Job Tracker</span>
-
-            <small>v1.0</small>
-
-        </div>
-
-    </aside>
-
-    <!-- CONTEÚDO PRINCIPAL -->
-    <main class="main">
-
-        <!-- HEADER -->
-        <header class="header">
-
-            <div>
-
-                <span class="header__greeting">
-                    Olá, Daniel 👋
-                </span>
-
-                <h2 class="header__title">
-                    Acompanhe suas candidaturas
-                </h2>
+                    <span class="sidebar__subtitle">
+                        Gestão de candidaturas
+                    </span>
+                </div>
 
             </div>
 
 
-            <button type="button" class="button button--primary" id="btnNovaCandidatura">
+            <nav class="sidebar__nav" aria-label="Navegação principal">
 
-                <span>+</span>
+                <a href="#" class="nav-link nav-link--active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
 
-                Nova candidatura
+                <a href="#" class="nav-link">
+                    <span>▤</span>
+                    Candidaturas
+                </a>
 
-            </button>
+            </nav>
 
-        </header>
-        <!-- ESTATÍSTICAS -->
-        <section class="stats" aria-label="Resumo das candidaturas">
 
-            <article class="stat-card">
+            <div class="sidebar__footer">
 
-                <div class="stat-card__icon stat-card__icon--blue">
-                    ≡
-                </div>
+                <span>Job Tracker</span>
+
+                <small>v1.0</small>
+
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main">
+
+            <!-- HEADER -->
+            <header class="header">
 
                 <div>
 
-                    <span class="stat-card__label">
-                        Total
+                    <span class="header__greeting">
+                        Olá, Daniel 👋
                     </span>
 
-                    <strong class="stat-card__value" id="totalCandidaturas">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-card__icon stat-card__icon--yellow">
-                    ◷
-                </div>
-
-                <div>
-
-                    <span class="stat-card__label">
-                        Em análise
-                    </span>
-
-                    <strong class="stat-card__value" id="candidaturasAnalise">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-card__icon stat-card__icon--purple">
-                    ◉
-                </div>
-
-                <div>
-
-                    <span class="stat-card__label">
-                        Entrevistas
-                    </span>
-
-                    <strong class="stat-card__value" id="candidaturasEntrevista">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-card__icon stat-card__icon--green">
-                    ✓
-                </div>
-
-                <div>
-
-                    <span class="stat-card__label">
-                        Aprovadas
-                    </span>
-
-                    <strong class="stat-card__value" id="candidaturasAprovadas">
-
-                        0
-
-                    </strong>
-
-                </div>
-
-            </article>
-
-        </section>
-        <!-- CANDIDATURAS -->
-        <section class="applications">
-
-            <div class="section-header">
-
-                <div>
-
-                    <h2 class="section-title">
-                        Minhas candidaturas
+                    <h2 class="header__title">
+                        Acompanhe suas candidaturas
                     </h2>
 
-                    <p class="section-description">
-                        Gerencie e acompanhe suas oportunidades.
-                    </p>
-
                 </div>
 
-            </div>
 
-        </section>
-        <!-- FILTROS -->
-        <div class="filters">
+                <button type="button" class="button button--primary" id="btnNovaCandidatura">
 
-            <div class="search">
+                    <span>+</span>
 
-                <span class="search__icon">
-                    ⌕
-                </span>
+                    Nova candidatura
 
-                <input type="search" id="inputPesquisa" class="search__input"
-                    placeholder="Pesquisar por vaga ou empresa..." aria-label="Pesquisar candidaturas">
+                </button>
 
-            </div>
+            </header>
+            <!-- ESTATÍSTICAS -->
+            <section class="stats" aria-label="Resumo das candidaturas">
+
+                <article class="stat-card">
+
+                    <div class="stat-card__icon stat-card__icon--blue">
+                        ≡
+                    </div>
+
+                    <div>
+
+                        <span class="stat-card__label">
+                            Total
+                        </span>
+
+                        <strong class="stat-card__value" id="totalCandidaturas">
+
+                            0
+
+                        </strong>
+
+                    </div>
+
+                </article>
 
 
-            <select id="filtroStatus" class="filter-select" aria-label="Filtrar por status">
+                <article class="stat-card">
 
-                <option value="todos">
-                    Todos os status
-                </option>
+                    <div class="stat-card__icon stat-card__icon--yellow">
+                        ◷
+                    </div>
 
-                <option value="enviada">
-                    Enviada
-                </option>
+                    <div>
 
-                <option value="analise">
-                    Em análise
-                </option>
+                        <span class="stat-card__label">
+                            Em análise
+                        </span>
 
-                <option value="entrevista">
-                    Entrevista
-                </option>
+                        <strong class="stat-card__value" id="candidaturasAnalise">
 
-                <option value="aprovada">
-                    Aprovada
-                </option>
+                            0
 
-                <option value="rejeitada">
-                    Rejeitada
-                </option>
+                        </strong>
 
-            </select>
+                    </div>
 
-        </div>
+                </article>
 
-        <!-- LISTA -->
-        <div class="application-list" id="listaCandidaturas">
 
-            <!-- CARD DE EXEMPLO -->
-            <article class="application-card">
+                <article class="stat-card">
 
-                <div class="application-card__company">
+                    <div class="stat-card__icon stat-card__icon--purple">
+                        ◉
+                    </div>
 
-                    <div class="company-logo">
-                        AC
+                    <div>
+
+                        <span class="stat-card__label">
+                            Entrevistas
+                        </span>
+
+                        <strong class="stat-card__value" id="candidaturasEntrevista">
+
+                            0
+
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-card__icon stat-card__icon--green">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span class="stat-card__label">
+                            Aprovadas
+                        </span>
+
+                        <strong class="stat-card__value" id="candidaturasAprovadas">
+
+                            0
+
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </section>
+            <!-- CANDIDATURAS -->
+            <section class="applications">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2 class="section-title">
+                            Minhas candidaturas
+                        </h2>
+
+                        <p class="section-description">
+                            Gerencie e acompanhe suas oportunidades.
+                        </p>
+
                     </div>
 
                 </div>
 
+            </section>
+            <!-- FILTROS -->
+            <div class="filters">
 
-                <div class="application-card__content">
+                <div class="search">
 
-                    <div class="application-card__top">
+                    <span class="search__icon">
+                        ⌕
+                    </span>
 
-                        <div>
+                    <input type="search" id="inputPesquisa" class="search__input"
+                        placeholder="Pesquisar por vaga ou empresa..." aria-label="Pesquisar candidaturas">
 
-                            <h3 class="application-card__title">
-                                Desenvolvedor Front-end
-                            </h3>
+                </div>
 
-                            <p class="application-card__company-name">
-                                Acme Corporation
-                            </p>
+
+                <select id="filtroStatus" class="filter-select" aria-label="Filtrar por status">
+
+                    <option value="todos">
+                        Todos os status
+                    </option>
+
+                    <option value="enviada">
+                        Enviada
+                    </option>
+
+                    <option value="analise">
+                        Em análise
+                    </option>
+
+                    <option value="entrevista">
+                        Entrevista
+                    </option>
+
+                    <option value="aprovada">
+                        Aprovada
+                    </option>
+
+                    <option value="rejeitada">
+                        Rejeitada
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- LISTA -->
+            <div class="application-list" id="listaCandidaturas">
+
+                <!-- CARD DE EXEMPLO -->
+                <article class="application-card">
+
+                    <div class="application-card__company">
+
+                        <div class="company-logo">
+                            AC
+                        </div>
+
+                    </div>
+
+
+                    <div class="application-card__content">
+
+                        <div class="application-card__top">
+
+                            <div>
+
+                                <h3 class="application-card__title">
+                                    Desenvolvedor Front-end
+                                </h3>
+
+                                <p class="application-card__company-name">
+                                    Acme Corporation
+                                </p>
+
+                            </div>
+
+
+                            <span class="status status--analysis">
+                                Em análise
+                            </span>
 
                         </div>
 
 
-                        <span class="status status--analysis">
-                            Em análise
-                        </span>
+                        <div class="application-card__details">
+
+                            <span>
+                                📍 São Paulo, SP
+                            </span>
+
+                            <span>
+                                💰 R$ 3.000 - R$ 4.000
+                            </span>
+
+                            <span>
+                                📅 20/08/2026
+                            </span>
+
+                        </div>
+
+
+                        <div class="application-card__actions">
+
+                            <button type="button" class="button button--secondary" data-action="edit">
+
+                                Editar
+
+                            </button>
+
+
+                            <button type="button" class="button button--danger" data-action="delete">
+
+                                Excluir
+
+                            </button>
+
+                        </div>
 
                     </div>
 
+                </article>
 
-                    <div class="application-card__details">
+            </div>
+            <!-- ESTADO VAZIO -->
+            <div class="empty-state" id="estadoVazio" hidden>
 
-                        <span>
-                            📍 São Paulo, SP
-                        </span>
+                <div class="empty-state__icon">
+                    💼
+                </div>
 
-                        <span>
-                            💰 R$ 3.000 - R$ 4.000
-                        </span>
+                <h3>
+                    Nenhuma candidatura encontrada
+                </h3>
 
-                        <span>
-                            📅 20/08/2026
-                        </span>
+                <p>
+                    Adicione sua primeira candidatura para começar
+                    a acompanhar suas oportunidades.
+                </p>
 
-                    </div>
+            </div>
+        </main>
+    </div>
+    <!-- MODAL -->
+    <dialog class="modal" id="modalCandidatura">
 
+        <div class="modal__content">
 
-                    <div class="application-card__actions">
+            <div class="modal__header">
 
-                        <button type="button" class="button button--secondary" data-action="edit">
+                <div>
 
-                            Editar
+                    <h2 class="modal__title">
+                        Nova candidatura
+                    </h2>
 
-                        </button>
-
-
-                        <button type="button" class="button button--danger" data-action="delete">
-
-                            Excluir
-
-                        </button>
-
-                    </div>
+                    <p class="modal__description">
+                        Adicione os dados da vaga.
+                    </p>
 
                 </div>
 
-            </article>
 
-        </div>
-        <!-- ESTADO VAZIO -->
-        <div class="empty-state" id="estadoVazio" hidden>
+                <button type="button" class="modal__close" id="btnFecharModal" aria-label="Fechar modal">
 
-            <div class="empty-state__icon">
-                💼
+                    ×
+
+                </button>
+
             </div>
 
-            <h3>
-                Nenhuma candidatura encontrada
-            </h3>
 
-            <p>
-                Adicione sua primeira candidatura para começar
-                a acompanhar suas oportunidades.
-            </p>
+            <form class="form" id="formCandidatura">
+
+            </form>
 
         </div>
 
-    </main>
+    </dialog>
+
 
 </body>
 
