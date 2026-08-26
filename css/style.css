@@ -382,3 +382,239 @@ a {
 
     font-size: 22px;
 }
+/* ==============================
+   APPLICATIONS
+================================ */
+
+.applications {
+    animation: fadeUp 450ms ease both;
+}
+
+.section-header {
+    margin-bottom: 18px;
+}
+
+.section-title {
+    font-size: 18px;
+}
+
+.section-description {
+    margin-top: 4px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* ==============================
+   FILTERS
+================================ */
+
+.filters {
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+.search {
+    position: relative;
+
+    flex: 1;
+}
+
+.search__icon {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+
+    transform: translateY(-50%);
+
+    color: var(--color-text-muted);
+}
+
+.search__input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 14px 0 40px;
+
+    background: white;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    font-size: 13px;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.search__input:focus {
+    border-color: var(--color-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.filter-select {
+    width: 180px;
+    height: 42px;
+
+    padding: 0 12px;
+
+    background: white;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+
+    color: var(--color-text);
+
+    outline: none;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   APPLICATION CARD
+================================ */
+
+.application-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.application-card {
+    display: flex;
+    gap: 16px;
+
+    padding: 20px;
+
+    background: white;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+
+    animation: fadeUp 350ms ease both;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.application-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.company-logo {
+    display: grid;
+    place-items: center;
+
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: #eff6ff;
+    color: var(--color-primary);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.application-card__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.application-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+.application-card__title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.application-card__company-name {
+    margin-top: 3px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 13px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.status--analysis {
+    background: #fffbeb;
+    color: var(--color-warning);
+}
+
+.status--sent {
+    background: #eff6ff;
+    color: var(--color-primary);
+}
+
+.status--interview {
+    background: #f5f3ff;
+    color: var(--color-purple);
+}
+
+.status--approved {
+    background: #f0fdf4;
+    color: var(--color-success);
+}
+
+.status--rejected {
+    background: #fef2f2;
+    color: var(--color-danger);
+}
+
+.application-card__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    margin-top: 14px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 12px;
+}
+
+.application-card__actions {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 18px;
+}
