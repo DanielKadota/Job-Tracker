@@ -55,13 +55,13 @@ function renderizarCandidaturas() {
         nomeEmpresa.textContent = candidatura.empresa;
 
         const dataSpan = document.createElement('span');
-        dataSpan.textContent = candidatura.dataCandidatura;
+        dataSpan.textContent = `📅 ${candidatura.dataCandidatura}`;
 
         const salarioSpan = document.createElement('span');
-        salarioSpan.textContent = candidatura.salario;
+        salarioSpan.textContent =`💰 ${candidatura.salario}`;
 
         const localizacaoSpan = document.createElement('span');
-        localizacaoSpan.textContent = candidatura.localizacao;
+        localizacaoSpan.textContent = `📍 ${candidatura.localizacao}`;
 
 
         const detalhes = document.createElement('div');
