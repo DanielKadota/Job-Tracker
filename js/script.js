@@ -1,4 +1,4 @@
-// Seleção dos elementos
+// ELEMENTOS
 const nvCandidatura = document.querySelector('#btnNovaCandidatura');
 const mlCandidatura = document.querySelector('#modalCandidatura');
 const btnFecharMl = document.querySelector('#btnFecharModal');
@@ -15,16 +15,18 @@ const status = document.querySelector('#status');
 const linkVaga = document.querySelector('#linkVaga');
 const observacoes = document.querySelector('#observacoes');
 
-// Abrir modal
+
+// MODAL
 nvCandidatura.addEventListener('click', function () {
     mlCandidatura.showModal();
 });
 
-// Fechar modal (botão)
 btnFecharMl.addEventListener('click', function () {
     mlCandidatura.close();
     formCandidatura.reset();
 });
+
+// Fecha ao clicar fora do modal
 mlCandidatura.addEventListener('click', function (event) {
 
     if (event.target === mlCandidatura) {
@@ -33,10 +35,30 @@ mlCandidatura.addEventListener('click', function (event) {
     }
 })
 
+
+// DADOS
 const candidaturas = [];
 
+const textoStatus = {
+    enviada: 'Enviada',
+    analise: 'Em análise',
+    entrevista: 'Entrevista',
+    aprovada: 'Aprovada',
+    rejeitada: 'Rejeitada'
+};
+
+const classeStatus = {
+    enviada: 'status--sent',
+    analise: 'status--analysis',
+    entrevista: 'status--interview',
+    aprovada: 'status--approved',
+    rejeitada: 'status--rejected'
+};
+
+
+// RENDERIZAR CARDS
 function renderizarCandidaturas() {
-    listaCandidaturas.innerHTML = '';   // limpa a lista antes de desenhar
+    listaCandidaturas.innerHTML = '';
 
     candidaturas.forEach(function (candidatura) {
 
@@ -46,6 +68,12 @@ function renderizarCandidaturas() {
         const conteudo = document.createElement('div');
         conteudo.classList.add('application-card__content');
 
+        // Topo: título e empresa + badge
+        const topo = document.createElement('div');
+        topo.classList.add('application-card__top');
+
+        const info = document.createElement('div');
+
         const titulo = document.createElement('h3');
         titulo.classList.add('application-card__title');
         titulo.textContent = candidatura.cargo;
@@ -54,6 +82,7 @@ function renderizarCandidaturas() {
         nomeEmpresa.classList.add('application-card__company-name');
         nomeEmpresa.textContent = candidatura.empresa;
 
+        // Detalhes
         const dataSpan = document.createElement('span');
         dataSpan.textContent = `📅 ${candidatura.dataCandidatura}`;
 
@@ -63,20 +92,30 @@ function renderizarCandidaturas() {
         const localizacaoSpan = document.createElement('span');
         localizacaoSpan.textContent = `📍 ${candidatura.localizacao}`;
 
+        // Badge de status
+        const statusSpan = document.createElement('span');
+        statusSpan.classList.add('status');
+        statusSpan.classList.add(classeStatus[candidatura.status]);
+        statusSpan.textContent = textoStatus [candidatura.status];
+
 
         const detalhes = document.createElement('div');
         detalhes.classList.add('application-card__details');
 
+        // Montagem do card
+        topo.append(info , statusSpan);
+        info.append(titulo, nomeEmpresa);
         detalhes.append(dataSpan, localizacaoSpan, salarioSpan);
-        conteudo.append(titulo, nomeEmpresa, detalhes);
+        conteudo.append(topo , detalhes);
 
         card.append(conteudo);
         listaCandidaturas.append(card);
 
-    });
+    }); 
 }
 
 
+// SALVAR CANDIDATURA
 formCandidatura.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -99,16 +138,12 @@ formCandidatura.addEventListener('submit', function (event) {
         status: valorStatus,
         linkVaga: valorLinkVaga,
         observacoes: valorObservacoes,
-        id: Date.now() // Cria um id para cada 1 das candidaturas
+        id: Date.now()
     };
 
     candidaturas.push(candidatura);
     mlCandidatura.close();
-    formCandidatura.reset();// para poder fechar o modal após salvar 
-
-
+    formCandidatura.reset();
 
     renderizarCandidaturas();
 });
-
-
