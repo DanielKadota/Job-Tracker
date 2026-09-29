@@ -5,6 +5,12 @@ const btnFecharMl = document.querySelector('#btnFecharModal');
 const formCandidatura = document.querySelector('#formCandidatura');
 const listaCandidaturas = document.querySelector('#listaCandidaturas');
 
+
+const totalCandidaturas = document.querySelector('#totalCandidaturas');
+const candidaturasAnalise = document.querySelector('#candidaturasAnalise');
+const candidaturasEntrevista = document.querySelector('#candidaturasEntrevista');
+const candidaturasAprovadas = document.querySelector('#candidaturasAprovadas');
+
 // Campos do formulário
 const cargo = document.querySelector('#cargo');
 const empresa = document.querySelector('#empresa');
@@ -87,7 +93,7 @@ function renderizarCandidaturas() {
         dataSpan.textContent = `📅 ${candidatura.dataCandidatura}`;
 
         const salarioSpan = document.createElement('span');
-        salarioSpan.textContent =`💰 ${candidatura.salario}`;
+        salarioSpan.textContent = `💰 ${candidatura.salario}`;
 
         const localizacaoSpan = document.createElement('span');
         localizacaoSpan.textContent = `📍 ${candidatura.localizacao}`;
@@ -96,22 +102,54 @@ function renderizarCandidaturas() {
         const statusSpan = document.createElement('span');
         statusSpan.classList.add('status');
         statusSpan.classList.add(classeStatus[candidatura.status]);
-        statusSpan.textContent = textoStatus [candidatura.status];
+        statusSpan.textContent = textoStatus[candidatura.status];
 
 
         const detalhes = document.createElement('div');
         detalhes.classList.add('application-card__details');
 
         // Montagem do card
-        topo.append(info , statusSpan);
+        topo.append(info, statusSpan);
         info.append(titulo, nomeEmpresa);
         detalhes.append(dataSpan, localizacaoSpan, salarioSpan);
-        conteudo.append(topo , detalhes);
+        conteudo.append(topo, detalhes);
 
         card.append(conteudo);
         listaCandidaturas.append(card);
 
-    }); 
+
+    }
+
+
+
+    );
+}
+
+function atualizarContadores() {
+
+    const total = candidaturas.length;
+
+    totalCandidaturas.textContent = total;
+
+    const analise = candidaturas.filter(function (candidatura) {
+        return candidatura.status === 'analise';
+
+    }).length;
+    candidaturasAnalise.textContent = analise;
+
+
+    const entrevistas = candidaturas.filter(function (candidatura) {
+        return candidatura.status === 'entrevista';
+
+    }).length;
+    candidaturasEntrevista.textContent = entrevistas;
+
+    const aprovadas = candidaturas.filter(function (candidatura) {
+        return candidatura.status === 'aprovada';
+
+    }).length;
+    candidaturasAprovadas.textContent = aprovadas;
+
 }
 
 
@@ -146,4 +184,5 @@ formCandidatura.addEventListener('submit', function (event) {
     formCandidatura.reset();
 
     renderizarCandidaturas();
+    atualizarContadores();
 });
