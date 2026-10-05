@@ -1,10 +1,12 @@
+// ==============================
 // ELEMENTOS
+// ==============================
+
 const nvCandidatura = document.querySelector('#btnNovaCandidatura');
 const mlCandidatura = document.querySelector('#modalCandidatura');
 const btnFecharMl = document.querySelector('#btnFecharModal');
 const formCandidatura = document.querySelector('#formCandidatura');
 const listaCandidaturas = document.querySelector('#listaCandidaturas');
-
 
 const totalCandidaturas = document.querySelector('#totalCandidaturas');
 const candidaturasAnalise = document.querySelector('#candidaturasAnalise');
@@ -22,29 +24,44 @@ const linkVaga = document.querySelector('#linkVaga');
 const observacoes = document.querySelector('#observacoes');
 
 
+// ==============================
 // MODAL
+// ==============================
+
+// Abre o modal no modo de criação
 nvCandidatura.addEventListener('click', function () {
+    idEditando = null;
+    formCandidatura.reset();
     mlCandidatura.showModal();
 });
 
+// Fecha o modal e limpa os dados do formulário
 btnFecharMl.addEventListener('click', function () {
     mlCandidatura.close();
     formCandidatura.reset();
 });
 
-// Fecha ao clicar fora do modal
+// Permite fechar o modal ao clicar fora do conteúdo
 mlCandidatura.addEventListener('click', function (event) {
 
     if (event.target === mlCandidatura) {
         mlCandidatura.close();
         formCandidatura.reset();
     }
-})
+});
 
 
+// ==============================
 // DADOS
+// ==============================
+
+// Identifica a candidatura que está sendo editada
+let idEditando = null;
+
+// Fonte de dados das candidaturas
 const candidaturas = [];
 
+// Textos exibidos para cada status
 const textoStatus = {
     enviada: 'Enviada',
     analise: 'Em análise',
@@ -53,6 +70,7 @@ const textoStatus = {
     rejeitada: 'Rejeitada'
 };
 
+// Classes CSS associadas aos status
 const classeStatus = {
     enviada: 'status--sent',
     analise: 'status--analysis',
@@ -62,10 +80,14 @@ const classeStatus = {
 };
 
 
-// RENDERIZAR CARDS
+// ==============================
+// RENDERIZAÇÃO
+// ==============================
+
 function renderizarCandidaturas() {
     listaCandidaturas.innerHTML = '';
 
+    // Reconstrói a lista com base nos dados atuais
     candidaturas.forEach(function (candidatura) {
 
         const card = document.createElement('article');
@@ -74,7 +96,7 @@ function renderizarCandidaturas() {
         const conteudo = document.createElement('div');
         conteudo.classList.add('application-card__content');
 
-        // Topo: título e empresa + badge
+        // Topo: informações principais e status
         const topo = document.createElement('div');
         topo.classList.add('application-card__top');
 
@@ -88,7 +110,7 @@ function renderizarCandidaturas() {
         nomeEmpresa.classList.add('application-card__company-name');
         nomeEmpresa.textContent = candidatura.empresa;
 
-        // Detalhes
+        // Informações complementares
         const dataSpan = document.createElement('span');
         dataSpan.textContent = `📅 ${candidatura.dataCandidatura}`;
 
@@ -98,65 +120,134 @@ function renderizarCandidaturas() {
         const localizacaoSpan = document.createElement('span');
         localizacaoSpan.textContent = `📍 ${candidatura.localizacao}`;
 
-        // Badge de status
+        // Status visual da candidatura
         const statusSpan = document.createElement('span');
         statusSpan.classList.add('status');
         statusSpan.classList.add(classeStatus[candidatura.status]);
         statusSpan.textContent = textoStatus[candidatura.status];
 
 
+        // ==============================
+        // EXCLUSÃO
+        // ==============================
+
+        const botaoExcluir = document.createElement('button');
+        botaoExcluir.setAttribute('data-action', 'delete');
+        botaoExcluir.setAttribute('data-id', candidatura.id);
+        botaoExcluir.textContent = 'Excluir';
+
+        botaoExcluir.addEventListener('click', function (event) {
+
+            const id = Number(event.target.dataset.id);
+
+            // Localiza a candidatura pelo ID antes de removê-la
+            const indice = candidaturas.findIndex(function (candidatura) {
+                return candidatura.id === id;
+            });
+
+            candidaturas.splice(indice, 1);
+
+            // Sincroniza os dados com a interface
+            renderizarCandidaturas();
+            atualizarContadores();
+        });
+
+
+        // ==============================
+        // EDIÇÃO
+        // ==============================
+
+        const botaoEditar = document.createElement('button');
+        botaoEditar.setAttribute('data-action', 'edit');
+        botaoEditar.setAttribute('data-id', candidatura.id);
+        botaoEditar.textContent = 'Editar';
+
+        botaoEditar.addEventListener('click', function (event) {
+
+            const id = Number(event.target.dataset.id);
+
+            // Localiza a candidatura que será editada
+            const indice = candidaturas.findIndex(function (candidatura) {
+                return candidatura.id === id;
+            });
+
+            const candidatura = candidaturas[indice];
+
+            // Carrega os dados atuais no formulário
+            cargo.value = candidatura.cargo;
+            empresa.value = candidatura.empresa;
+            localizacao.value = candidatura.localizacao;
+            salario.value = candidatura.salario;
+            dataCandidatura.value = candidatura.dataCandidatura;
+            status.value = candidatura.status;
+            linkVaga.value = candidatura.linkVaga;
+            observacoes.value = candidatura.observacoes;
+
+            idEditando = id;
+
+            mlCandidatura.showModal();
+        });
+
+
+        // ==============================
+        // ESTRUTURA DO CARD
+        // ==============================
+
         const detalhes = document.createElement('div');
         detalhes.classList.add('application-card__details');
 
-        // Montagem do card
+        const acoes = document.createElement('div');
+        acoes.append(botaoExcluir, botaoEditar);
+
         topo.append(info, statusSpan);
         info.append(titulo, nomeEmpresa);
         detalhes.append(dataSpan, localizacaoSpan, salarioSpan);
-        conteudo.append(topo, detalhes);
+        conteudo.append(topo, detalhes, acoes);
 
         card.append(conteudo);
         listaCandidaturas.append(card);
-
-
-    }
-
-
-
-    );
+    });
 }
+
+
+// ==============================
+// CONTADORES
+// ==============================
 
 function atualizarContadores() {
 
     const total = candidaturas.length;
-
     totalCandidaturas.textContent = total;
 
+    // Filtra as candidaturas pelo status e contabiliza os resultados
     const analise = candidaturas.filter(function (candidatura) {
         return candidatura.status === 'analise';
-
     }).length;
-    candidaturasAnalise.textContent = analise;
 
+    candidaturasAnalise.textContent = analise;
 
     const entrevistas = candidaturas.filter(function (candidatura) {
         return candidatura.status === 'entrevista';
-
     }).length;
+
     candidaturasEntrevista.textContent = entrevistas;
 
     const aprovadas = candidaturas.filter(function (candidatura) {
         return candidatura.status === 'aprovada';
-
     }).length;
-    candidaturasAprovadas.textContent = aprovadas;
 
+    candidaturasAprovadas.textContent = aprovadas;
 }
 
 
-// SALVAR CANDIDATURA
+// ==============================
+// FORMULÁRIO
+// ==============================
+
 formCandidatura.addEventListener('submit', function (event) {
     event.preventDefault();
 
+    // Captura os valores preenchidos pelo usuário
     const valorCargo = cargo.value;
     const valorEmpresa = empresa.value;
     const valorLocalizacao = localizacao.value;
@@ -167,6 +258,7 @@ formCandidatura.addEventListener('submit', function (event) {
     const valorObservacoes = observacoes.value;
 
 
+    // Cria o objeto que representa a candidatura
     const candidatura = {
         cargo: valorCargo,
         empresa: valorEmpresa,
@@ -176,12 +268,30 @@ formCandidatura.addEventListener('submit', function (event) {
         status: valorStatus,
         linkVaga: valorLinkVaga,
         observacoes: valorObservacoes,
-        id: Date.now()
+
+        // Mantém o ID durante a edição ou gera um novo para uma candidatura
+        // criada do zero
+        id: idEditando ?? Date.now()
     };
 
-    candidaturas.push(candidatura);
+
+    // Diferencia uma nova candidatura de uma edição
+    if (idEditando === null) {
+        candidaturas.push(candidatura);
+    } else {
+
+        const indice = candidaturas.findIndex(function (candidatura) {
+            return candidatura.id === idEditando;
+        });
+
+        candidaturas[indice] = candidatura;
+    }
+
+
+    // Finaliza a operação e atualiza a interface
     mlCandidatura.close();
     formCandidatura.reset();
+    idEditando = null;
 
     renderizarCandidaturas();
     atualizarContadores();
