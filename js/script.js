@@ -7,6 +7,7 @@ const mlCandidatura = document.querySelector('#modalCandidatura');
 const btnFecharMl = document.querySelector('#btnFecharModal');
 const formCandidatura = document.querySelector('#formCandidatura');
 const listaCandidaturas = document.querySelector('#listaCandidaturas');
+const pesquisaCandidaturas = document.querySelector('#inputPesquisa');
 
 const totalCandidaturas = document.querySelector('#totalCandidaturas');
 const candidaturasAnalise = document.querySelector('#candidaturasAnalise');
@@ -22,6 +23,27 @@ const dataCandidatura = document.querySelector('#dataCandidatura');
 const status = document.querySelector('#status');
 const linkVaga = document.querySelector('#linkVaga');
 const observacoes = document.querySelector('#observacoes');
+
+
+// ==============================
+// PESQUISA
+// ==============================
+
+pesquisaCandidaturas.addEventListener('input', function(){
+
+    const consultaPesquisa = candidaturas.filter(function(candidatura){
+
+        const termoPesquisa = pesquisaCandidaturas.value.toLowerCase(); 
+
+        const pesquisaCargo = candidatura.cargo;
+        const pesquisaEmpresa = candidatura.empresa;
+
+        return pesquisaCargo.toLowerCase().includes(termoPesquisa)
+        || pesquisaEmpresa.toLowerCase().includes(termoPesquisa);
+        
+    });
+    renderizarCandidaturas(consultaPesquisa);
+});
 
 
 // ==============================
@@ -84,11 +106,11 @@ const classeStatus = {
 // RENDERIZAÇÃO
 // ==============================
 
-function renderizarCandidaturas() {
+function renderizarCandidaturas(lista = candidaturas) {
     listaCandidaturas.innerHTML = '';
 
     // Reconstrói a lista com base nos dados atuais
-    candidaturas.forEach(function (candidatura) {
+    lista.forEach(function (candidatura) {
 
         const card = document.createElement('article');
         card.classList.add('application-card');
@@ -272,7 +294,7 @@ formCandidatura.addEventListener('submit', function (event) {
         // Mantém o ID durante a edição ou gera um novo para uma candidatura
         // criada do zero
         id: idEditando ?? Date.now()
-    };
+    };          
 
 
     // Diferencia uma nova candidatura de uma edição
