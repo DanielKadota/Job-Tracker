@@ -29,18 +29,18 @@ const observacoes = document.querySelector('#observacoes');
 // PESQUISA
 // ==============================
 
-pesquisaCandidaturas.addEventListener('input', function(){
+pesquisaCandidaturas.addEventListener('input', function () {
 
-    const consultaPesquisa = candidaturas.filter(function(candidatura){
+    const consultaPesquisa = candidaturas.filter(function (candidatura) {
 
-        const termoPesquisa = pesquisaCandidaturas.value.toLowerCase(); 
+        const termoPesquisa = pesquisaCandidaturas.value.toLowerCase();
 
         const pesquisaCargo = candidatura.cargo;
         const pesquisaEmpresa = candidatura.empresa;
 
         return pesquisaCargo.toLowerCase().includes(termoPesquisa)
-        || pesquisaEmpresa.toLowerCase().includes(termoPesquisa);
-        
+            || pesquisaEmpresa.toLowerCase().includes(termoPesquisa);
+
     });
     renderizarCandidaturas(consultaPesquisa);
 });
@@ -154,6 +154,7 @@ function renderizarCandidaturas(lista = candidaturas) {
         // ==============================
 
         const botaoExcluir = document.createElement('button');
+        botaoExcluir.classList.add('button', 'button--danger');
         botaoExcluir.setAttribute('data-action', 'delete');
         botaoExcluir.setAttribute('data-id', candidatura.id);
         botaoExcluir.textContent = 'Excluir';
@@ -180,6 +181,7 @@ function renderizarCandidaturas(lista = candidaturas) {
         // ==============================
 
         const botaoEditar = document.createElement('button');
+        botaoEditar.classList.add('button', 'button--secondary');
         botaoEditar.setAttribute('data-action', 'edit');
         botaoEditar.setAttribute('data-id', candidatura.id);
         botaoEditar.textContent = 'Editar';
@@ -294,7 +296,7 @@ formCandidatura.addEventListener('submit', function (event) {
         // Mantém o ID durante a edição ou gera um novo para uma candidatura
         // criada do zero
         id: idEditando ?? Date.now()
-    };          
+    };
 
 
     // Diferencia uma nova candidatura de uma edição
