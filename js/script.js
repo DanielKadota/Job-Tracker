@@ -8,6 +8,7 @@ const btnFecharMl = document.querySelector('#btnFecharModal');
 const formCandidatura = document.querySelector('#formCandidatura');
 const listaCandidaturas = document.querySelector('#listaCandidaturas');
 const pesquisaCandidaturas = document.querySelector('#inputPesquisa');
+const filtroStatus = document.querySelector('#filtroStatus');
 
 const totalCandidaturas = document.querySelector('#totalCandidaturas');
 const candidaturasAnalise = document.querySelector('#candidaturasAnalise');
@@ -43,6 +44,27 @@ pesquisaCandidaturas.addEventListener('input', function () {
 
     });
     renderizarCandidaturas(consultaPesquisa);
+});
+
+// ==============================
+// FILTRO POR STATUS
+// ==============================
+
+filtroStatus.addEventListener('change', function () {
+
+    const filtrarStatus = filtroStatus.value;
+
+    if (filtrarStatus === 'todos') {
+        renderizarCandidaturas();
+    } else {
+
+        const resultado = candidaturas.filter(function (candidatura) {
+            return candidatura.status === filtrarStatus;
+        });
+
+        renderizarCandidaturas(resultado);
+    }
+
 });
 
 
